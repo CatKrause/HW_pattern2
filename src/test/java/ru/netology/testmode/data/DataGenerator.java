@@ -6,7 +6,6 @@ import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import lombok.Value;
-import lombok.val;
 
 import java.util.Locale;
 
@@ -27,7 +26,7 @@ public class DataGenerator {
 
     private static void sendRequest(RegistrationDto user) {
 
-        given() // "дано"
+        given()
                 .spec(requestSpec)
                 .body(user)
                 .when()
@@ -58,6 +57,7 @@ public class DataGenerator {
 
         public static RegistrationDto getRegisteredUser(String status) {
             var registeredUser = getUser(status);
+            sendRequest(registeredUser);
             return registeredUser;
         }
     }

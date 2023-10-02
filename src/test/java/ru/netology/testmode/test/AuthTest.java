@@ -39,7 +39,7 @@ class AuthTest {
         $("[data-test-id='login'] input").setValue(notRegisteredUser.getLogin());
         $("[data-test-id='password'] input").setValue(notRegisteredUser.getPassword());
         $("[data-test-id='action-login']").click();
-        $("[data-test-id='error-notification']").shouldHave(text("Ошибка"));
+        $("[data-test-id='error-notification']").shouldHave(text("Неверно указан логин или пароль"));
         // TODO: добавить логику теста в рамках которого будет выполнена попытка входа в личный кабинет
         //  незарегистрированного пользователя, для заполнения полей формы используйте пользователя notRegisteredUser
     }
@@ -51,7 +51,7 @@ class AuthTest {
         $("[data-test-id='login'] input").setValue(blockedUser.getLogin());
         $("[data-test-id='password'] input").setValue(blockedUser.getPassword());
         $("[data-test-id='action-login']").click();
-        $("[data-test-id='error-notification']").shouldHave(text("Ошибка"));
+        $("[data-test-id='error-notification']").shouldHave(text("Пользователь заблокирован"));
         // TODO: добавить логику теста в рамках которого будет выполнена попытка входа в личный кабинет,
         //  заблокированного пользователя, для заполнения полей формы используйте пользователя blockedUser
     }
@@ -64,7 +64,7 @@ class AuthTest {
         $("[data-test-id='login'] input").setValue(wrongLogin);
         $("[data-test-id='password'] input").setValue(registeredUser.getPassword());
         $("[data-test-id='action-login']").click();
-        $("[data-test-id='error-notification']").shouldHave(text("Ошибка"));
+        $("[data-test-id='error-notification']").shouldHave(text("Неверно указан логин или пароль"));
         // TODO: добавить логику теста в рамках которого будет выполнена попытка входа в личный кабинет с неверным
         //  логином, для заполнения поля формы "Логин" используйте переменную wrongLogin,
         //  "Пароль" - пользователя registeredUser
@@ -78,6 +78,6 @@ class AuthTest {
         $("[data-test-id='login'] input").setValue(registeredUser.getLogin());
         $("[data-test-id='password'] input").setValue(wrongPassword);
         $("[data-test-id='action-login']").click();
-        $("[data-test-id='error-notification']").shouldHave(text("Ошибка"));
+        $("[data-test-id='error-notification']").shouldHave(text("Неверно указан логин или пароль"));
     }
 }
